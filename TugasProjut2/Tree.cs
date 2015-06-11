@@ -1,27 +1,54 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace TugasProjut2
 {
     class Tree
     {
-        public static void MainTree()
+
+        public void cetakTree()
         {
-            //BinaryTree class written by Jaco Ruit
-            string nama1 = "Zetta";
-            string nama2 = "Nanno";
-            string nama3 = "Zxk";
-            BinaryTree<string> namaOrang = new BinaryTree<string>(nama3);
-            namaOrang.InsertItems<string>(nama1, nama2);
-            foreach (string nama in namaOrang)
+            foreach (string namaanak in namaOrang)
             {
-                Console.WriteLine(nama);
+                Console.WriteLine(namaanak);
             }
             Console.ReadLine();
         }
+
+        public BinaryTree<string> namaOrang;
+        public void insertTree(string nama)
+        {
+            //BinaryTree class written by Jaco Ruit
+            namaOrang.InsertItems<string>(nama);
+        }
+
+        public void bacaAll()
+        {
+            int counter = 0;
+            string line;
+
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\output.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+                string nama1 = result[0];
+                insertTree(nama1);
+            }
+        }
+
     }
 
     public static class Extensions

@@ -26,6 +26,10 @@ namespace TugasProjut2
         private const int RESTORE = 9;
         public static void Main()
         {
+            Tree obj = new Tree();
+
+            obj.bacaAll();
+
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string filein = dir + @"\output.txt";
             if (!File.Exists(filein))
@@ -36,6 +40,9 @@ namespace TugasProjut2
             ShowWindow(ThisConsole, MAXIMIZE);
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
+            obj.cetakTree();
+            Console.ReadLine();
+
             bool kondisi;
             int pilih = 0;
             string pilihan;

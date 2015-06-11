@@ -5,3 +5,8 @@ D:\Tugas SU\Sem 2\Adv_Pro\TugasProjut2-Binary\TugasProjut2\bin\Debug\TugasProjut
 D:\Tugas SU\Sem 2\Adv_Pro\TugasProjut2-Binary\TugasProjut2\obj\Debug\TugasProjut2.csprojResolveAssemblyReference.cache
 D:\Tugas SU\Sem 2\Adv_Pro\TugasProjut2-Binary\TugasProjut2\obj\Debug\TugasProjut2.exe
 D:\Tugas SU\Sem 2\Adv_Pro\TugasProjut2-Binary\TugasProjut2\obj\Debug\TugasProjut2.pdb
+C:\Users\Alvin Julian\Documents\Visual Studio 2013\Projects\TugasProjut2\TugasProjut2\obj\Debug\TugasProjut2.exe
+C:\Users\Alvin Julian\Documents\Visual Studio 2013\Projects\TugasProjut2\TugasProjut2\obj\Debug\TugasProjut2.pdb
+C:\Users\Alvin Julian\Documents\Visual Studio 2013\Projects\TugasProjut2\TugasProjut2\obj\Debug\TugasProjut2.csprojResolveAssemblyReference.cache
+C:\Users\Alvin Julian\Documents\Visual Studio 2013\Projects\TugasProjut2\TugasProjut2\bin\Debug\TugasProjut2.exe
+C:\Users\Alvin Julian\Documents\Visual Studio 2013\Projects\TugasProjut2\TugasProjut2\bin\Debug\TugasProjut2.pdb
