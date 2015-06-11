@@ -16,11 +16,62 @@ namespace TugasProjut2
 
         public void cetakTree()
         {
+            string line;
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\output.txt";
+            string filecp = dir + @"\outputcp.txt";
             foreach (string namaanak in namaOrang)
             {
-                Console.WriteLine(namaanak);
+
+                StreamReader sr = new StreamReader(file);
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] result = rgx.Split(line);
+                    //mengecek apakah idbuku benar, lalu duedate dan nim peminjam jadi "-" lalu masukin ke file
+                    if (result[0] == namaanak)
+                    {
+                        if (!File.Exists(filecp))
+                        {
+                            // Create a file to write to. kalau belom ada filenya 
+                            using (StreamWriter swnew = File.CreateText(filecp))
+                            {
+                                swnew.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2]);
+                                swnew.Close();
+                            }
+                        }
+                        //kalau ud ada file yang mau ditulis
+                        else
+                        {
+                            using (FileStream fs = new FileStream(filecp, FileMode.Append, FileAccess.Write))
+                            using (StreamWriter sw = new StreamWriter(fs))
+                            {
+                                sw.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2]);
+                                sw.Close();
+                            }
+                            
+                        }
+                    }
+                }
+                sr.Close();
+                
             }
-            Console.ReadLine();
+            copyfile();
+        }
+        static void copyfile() //untuk copy isi file dan delete
+        {
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\outputcp.txt";
+            string target = dir + @"\output.txt";
+            //copy file di folder yg sama.. hati2 penamaanya yaa
+            System.IO.File.Copy(file, target, true);
+
+            //delete cp nya sekarang
+            File.Delete(file);
+            // Keep console window open in debug mode.
+            //Console.WriteLine("Press any key to exit.");
+            //Console.ReadKey();
         }
 
         public BinaryTree<string> namaOrang;
@@ -61,7 +112,6 @@ namespace TugasProjut2
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\output.txt";
             StreamReader sr = new StreamReader(file);
-            int a = 0;
 
             string root1 = root();
             namaOrang = new BinaryTree<string>(root1);

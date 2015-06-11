@@ -28,19 +28,22 @@ namespace TugasProjut2
         {
             Tree obj = new Tree();
 
-            obj.bacaAll();
 
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string filein = dir + @"\output.txt";
             if (!File.Exists(filein))
             {
                 copyfileout();
+                obj.bacaAll();
+                obj.cetakTree();
+
+                
             }
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             ShowWindow(ThisConsole, MAXIMIZE);
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
-            obj.cetakTree();
+            
             Console.ReadLine();
 
             bool kondisi;
