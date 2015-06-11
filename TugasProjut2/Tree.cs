@@ -24,7 +24,6 @@ namespace TugasProjut2
             string filecp = dir + @"\outputcp.txt";
             foreach (string namaanak in namaOrang)
             {
-
                 StreamReader sr = new StreamReader(file);
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -38,7 +37,7 @@ namespace TugasProjut2
                             using (StreamWriter swnew = File.CreateText(filecp))
                             {
                                 swnew.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2]);
-                                swnew.Close();
+                                
                             }
                         }
                         //kalau ud ada file yang mau ditulis
@@ -48,18 +47,17 @@ namespace TugasProjut2
                             using (StreamWriter sw = new StreamWriter(fs))
                             {
                                 sw.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2]);
-                                sw.Close();
+                                
                             }
                             
                         }
                     }
                 }
                 sr.Close();
-                
             }
-            copyfile();
+            copyfile1();
         }
-        static void copyfile() //untuk copy isi file dan delete
+        static void copyfile1() //untuk copy isi file dan delete
         {
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\outputcp.txt";
@@ -69,9 +67,7 @@ namespace TugasProjut2
 
             //delete cp nya sekarang
             File.Delete(file);
-            // Keep console window open in debug mode.
-            //Console.WriteLine("Press any key to exit.");
-            //Console.ReadKey();
+
         }
 
         public BinaryTree<string> namaOrang;
@@ -97,8 +93,13 @@ namespace TugasProjut2
 
                 string[] result = rgx.Split(line);
                 if (a == 0)
-                    return result[0];
+                {
+                    string akar = result[0];
+                    sr.Close();
+                    return akar;
+                }
             }
+            sr.Close();
             return "a";
         }
         public void bacaAll()
@@ -125,6 +126,7 @@ namespace TugasProjut2
                         insertTree(nama1);
                     }
             }
+            sr.Close();
         }
 
     }
