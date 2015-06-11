@@ -58,6 +58,7 @@ namespace TugasProjut2
             {
                 case 1:
                     //tampil data
+                    //Tree.MainTree();
                     TampilKara.menulihat();
                     break;
                 case 2:
@@ -75,6 +76,7 @@ namespace TugasProjut2
                 default:
                     break;
             }
+            
         }
 
         static void printMenu()
