@@ -30,9 +30,8 @@ namespace TugasProjut2
             namaOrang.InsertItems<string>(nama);
         }
 
-        public void bacaAll()
+        public string root()
         {
-            int counter = 0;
             string line;
 
             string pattern = @"\t+";
@@ -41,11 +40,40 @@ namespace TugasProjut2
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\output.txt";
             StreamReader sr = new StreamReader(file);
+            int a = 0;
+            while ((line = sr.ReadLine()) != null &&a==0)
+            {
+
+                string[] result = rgx.Split(line);
+                if (a == 0)
+                    return result[0];
+            }
+            return "a";
+        }
+        public void bacaAll()
+        {
+
+            string line;
+
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\output.txt";
+            StreamReader sr = new StreamReader(file);
+            int a = 0;
+
+            string root1 = root();
+            namaOrang = new BinaryTree<string>(root1);
             while ((line = sr.ReadLine()) != null)
             {
-                string[] result = rgx.Split(line);
-                string nama1 = result[0];
-                insertTree(nama1);
+                    
+                    string[] result = rgx.Split(line);
+                    if (result[0] != root1)
+                    {
+                        string nama1 = result[0];
+                        insertTree(nama1);
+                    }
             }
         }
 
