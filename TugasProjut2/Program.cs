@@ -34,17 +34,14 @@ namespace TugasProjut2
             if (!File.Exists(filein))
             {
                 copyfileout();
-                obj.bacaAll();
-                obj.cetakTree();
-
-                
+                obj.bacaAll(); //untuk listing
+                obj.cetakTree(); // nulis dari hasil listing 
             }
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             ShowWindow(ThisConsole, MAXIMIZE);
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
             
-            Console.ReadLine();
 
             bool kondisi;
             int pilih = 0;

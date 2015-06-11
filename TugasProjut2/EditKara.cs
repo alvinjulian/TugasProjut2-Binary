@@ -102,6 +102,10 @@ namespace TugasProjut2
             alamat = Console.ReadLine();
             //koding nulis ke file output.txt
             nulisdata(nama, umur, alamat);
+            //listing lagi
+            Tree obj = new Tree();
+            obj.bacaAll();
+            obj.cetakTree();
             //
             Console.WriteLine("\n\nData berhasil disimpan! Tekan sembarang tombol untuk kembali....");
             Console.ReadLine();
@@ -184,7 +188,12 @@ namespace TugasProjut2
             }
             ///koding hapus kara
             hapuskara(nama);
+
             copyfile();
+            //listing lagi
+            Tree obj = new Tree();
+            obj.bacaAll();
+            obj.cetakTree();
             ///
             Console.WriteLine("Penghapusa Karakter Berhasil!\n");
             Console.Write("Klik sembarang untuk kembali ke menu utama...");
