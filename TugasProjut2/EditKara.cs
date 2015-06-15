@@ -152,10 +152,17 @@ namespace TugasProjut2
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\output.txt";
             //StreamReader sr = new StreamReader(file);
-            using (FileStream fs = new FileStream(file, FileMode.Append, FileAccess.Write))
-            using (StreamWriter sw = new StreamWriter(fs))
+            try
             {
-                sw.WriteLine(nama + "\t" + umurS + "\t" + alamat);
+                using (FileStream fs = new FileStream(file, FileMode.Append, FileAccess.Write))
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine(nama + "\t" + umurS + "\t" + alamat);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
             ////////////////////////////////////////////////
             //CATCH
@@ -236,18 +243,32 @@ namespace TugasProjut2
                     if (!File.Exists(filecp))
                     {
                         // Create a file to write to. kalau belom ada filenya 
-                        using (StreamWriter swnew = File.CreateText(filecp))
+                        try
                         {
-                            swnew.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2]);
+                            using (StreamWriter swnew = File.CreateText(filecp))
+                            {
+                                swnew.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2]);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
                         }
                     }
                     //kalau ud ada file yang mau ditulis
                     else
                     {
-                        using (FileStream fs = new FileStream(filecp, FileMode.Append, FileAccess.Write))
-                        using (StreamWriter sw = new StreamWriter(fs))
+                        try
                         {
-                            sw.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2]);
+                            using (FileStream fs = new FileStream(filecp, FileMode.Append, FileAccess.Write))
+                            using (StreamWriter sw = new StreamWriter(fs))
+                            {
+                                sw.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2]);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
                         }
                     }
                 }
