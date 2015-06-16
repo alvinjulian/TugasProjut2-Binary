@@ -49,6 +49,7 @@ namespace TugasProjut2
         }
         static void menuMasukankarater()
         {
+             
             string nama;
             int umur;
             string alamat;
@@ -76,6 +77,8 @@ namespace TugasProjut2
 
             } while (batas == false);
             batas = false;
+            bool kondisiumur;
+            string umurs;
             do
             {
                 Console.Clear();
@@ -83,8 +86,9 @@ namespace TugasProjut2
                 Console.WriteLine("\t\t\t\t\t\t\t==================\n");
                 Console.Write("Masukan Nama : {0}", nama);
                 Console.Write("\nMasukan Umur : ");
-                umur = int.Parse(Console.ReadLine());
-                if (umur >= 0)
+                umurs = Console.ReadLine();
+                kondisiumur = int.TryParse(umurs, out umur);                
+                if (umur >= 0 &&kondisiumur==true)
                 {
                     batas = true;
                     continue;
