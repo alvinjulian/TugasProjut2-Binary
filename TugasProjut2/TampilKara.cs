@@ -12,15 +12,34 @@ using System.Threading.Tasks;
 
 namespace TugasProjut2
 {
+    class salah
+    {
+        public salah()
+        {
+            Console.WriteLine("\nPilihan yang anda masukan salah!");
+        }
+        ~salah()
+        {
+            Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+        }
+    }
+
     class TampilKara
     {
+        public static void salahInput()
+        {
+            salah T = new salah();
+        }
+
         public static void menulihat()
         {
+            
             bool kondisi;
             int pilih = 0;
             string pilihan;
             do
             {
+                
                 printMenulihat();
                 Console.Write("Masukan pilihan anda : ");
                 pilihan = Console.ReadLine();
@@ -29,8 +48,10 @@ namespace TugasProjut2
                 {
                     continue;
                 }
-                Console.WriteLine("\nPilihan yang anda masukan salah!");
-                Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                //Console.WriteLine("\nPilihan yang anda masukan salah!");
+                //Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                salahInput();
+                GC.Collect();
                 Console.ReadLine();
             } while (pilih < 1 || pilih > 4);
 
