@@ -92,8 +92,9 @@ namespace TugasProjut2
         {
             Console.Clear();
             string alamat;
+            
                 Console.Clear();
-                Console.WriteLine("\t\t\t\t\t\t\tMenu lihat alamt tertentu");
+                Console.WriteLine("\t\t\t\t\t\t\tMenu lihat alamat tertentu");
                 Console.WriteLine("\t\t\t\t\t\t\t===============================\n");
                 Console.Write("\nMasukan alamat : ");
                 alamat = Console.ReadLine();
@@ -101,10 +102,16 @@ namespace TugasProjut2
             Console.WriteLine("\t\t\t\t\t\t\tList Karakter");
             Console.WriteLine("\t\t\t\t\t\t\t=========\n");
             Console.WriteLine("No.\tNama\t\t\t\t\t\t\t\tUmur\t\tAlamat\n\n");
-            //Codingan baca dari file atau ambil langsung dri function
-            bacaalamat(alamat);
-
-            Console.Write("\n\nKlik sembarang untuk kembali ke menu lihat...");
+            if (alamat != "")
+            {
+                //Codingan baca dari file atau ambil langsung dri function
+                bacaalamat(alamat);
+            }
+            else
+            {
+                Console.WriteLine("Tidak ada karakter dengan alamat tersebut.");
+            }
+           Console.Write("\n\nKlik sembarang untuk kembali ke menu lihat...");
             Console.ReadKey();
             menulihat();
         }
@@ -173,14 +180,17 @@ namespace TugasProjut2
             Console.Clear();
             bool batas = false;
             int umur;
+            string umurs;
+            bool kondisi;
             do
             {
                 Console.Clear();
                 Console.WriteLine("\t\t\t\t\t\t\tMenu lihat diatas umur tertentu");
                 Console.WriteLine("\t\t\t\t\t\t\t===============================\n");
                 Console.Write("\nMasukan batas umur bawah : ");
-                umur = int.Parse(Console.ReadLine());
-                if (umur >= 0)
+                umurs = Console.ReadLine();
+                kondisi = int.TryParse(umurs, out umur);
+                if (umur >= 0 && kondisi==true)
                 {
                     batas = true;
                     continue;
@@ -268,13 +278,9 @@ namespace TugasProjut2
        
         static void tampilAll()
         {
-
-            ////////////////////////////////////////////////
-            //Try(?)
-            ///////////////////////////////////////////////
             //method untuk tampilkan semua karakter
             Console.Clear();
-            Console.WriteLine("\t\t\t\t\t\t\tList Murid");
+            Console.WriteLine("\t\t\t\t\t\t\tList Karakter");
             Console.WriteLine("\t\t\t\t\t\t\t=========\n");
             Console.WriteLine("No.\tNama\t\t\t\t\t\t\t\tUmur\t\tAlamat\n\n");
             //Codingan baca dari file atau ambil langsung dri function

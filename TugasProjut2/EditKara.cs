@@ -61,7 +61,7 @@ namespace TugasProjut2
                 Console.WriteLine("\t\t\t\t\t\t\t==================\n");
                 Console.Write("Masukan Nama : ");
                 nama = Console.ReadLine();
-                if (ceknama(nama) == false && IsDigitsOnly(nama) == true)
+                if (ceknama(nama) == false && IsDigitsOnly(nama) == true && nama!="")
                 {
                     //ceking nama
                     batas = true;
@@ -102,8 +102,26 @@ namespace TugasProjut2
 
             } while (batas == false);
             batas = false;
-            Console.Write("Masukan Alamat : ");
-            alamat = Console.ReadLine();
+            do
+            {
+
+                Console.Clear();
+                Console.WriteLine("\t\t\t\t\t\t\tMasukan Data Karakter");
+                Console.WriteLine("\t\t\t\t\t\t\t==================\n");
+                Console.Write("Masukan Nama : {0}", nama);
+                Console.Write("\nMasukan Umur :{0} ",umur);
+                Console.Write("\nMasukan Alamat : ");
+                alamat = Console.ReadLine();
+                if (alamat != "")
+                {
+                    batas = true;
+                }
+                else
+                {
+                    Console.WriteLine("Alamat yang dimasukan tidak valid!\nTekan sembarang tombol untuk kembali memasukan alamat");
+                    Console.ReadKey();
+                }
+            } while (batas == false);
             //koding nulis ke file output.txt
             nulisdata(nama, umur, alamat);
             //listing lagi
@@ -206,7 +224,7 @@ namespace TugasProjut2
             obj.bacaAll();
             obj.cetakTree();
             ///
-            Console.WriteLine("Penghapusa Karakter Berhasil!\n");
+
             Console.Write("Klik sembarang untuk kembali ke menu utama...");
             Console.ReadKey();
             Program.Main();
@@ -228,9 +246,7 @@ namespace TugasProjut2
         static void hapuskara(string nama)
         {
 
-            ////////////////////////////////////////////////
-            //TRY
-            ///////////////////////////////////////////////
+            int counter=0;
             string line;
             string pattern = @"\t+";
             Regex rgx = new Regex(pattern);
@@ -258,10 +274,13 @@ namespace TugasProjut2
                         {
                             Console.WriteLine(e);
                         }
+
                     }
                     //kalau ud ada file yang mau ditulis
                     else
                     {
+
+
                         try
                         {
                             using (FileStream fs = new FileStream(filecp, FileMode.Append, FileAccess.Write))
@@ -276,9 +295,20 @@ namespace TugasProjut2
                         }
                     }
                 }
+                else
+                {
+                    counter++;
+                }
             }
             sr.Close();
-
+            if (counter > 0)
+            {
+                Console.WriteLine("Penghapusan Karakter Berhasil!\n");
+            }
+            else
+            {
+                Console.WriteLine("Karakter Tidak ada!\n");
+            }
             ////////////////////////////////////////////////
             //CATCH
             ///////////////////////////////////////////////
